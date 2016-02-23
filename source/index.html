@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla</title>
+    <!-- build:css css/style.min.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/stylus/ejemplo.1.css">
+    <link rel="stylesheet" href="/stylus/ejemplo.2.css">
+    <link rel="stylesheet" href="/stylus/ejemplo.3.css">
+    <link rel="stylesheet" href="/stylus/ejemplo.4.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body>
+    <h2>Hola bienvenidos Aprendices!</h2>
+
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div ng-view></div>
+
+    <!-- build:js js/vendor.min.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js js/app.min.js -->
+    <!-- inject:js -->
+    <script src="/app/app.module.js"></script>
+    <script src="/app/templates.js"></script>
+    <script src="/app/solicitudes/app.controller.js"></script>
+    <script src="/app/solicitudes/app.module.js"></script>
+    <script src="/app/solicitudes/app.route.js"></script>
+    <script src="/app/solicitudes/app.services.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+
+</html>

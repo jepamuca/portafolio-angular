@@ -1,0 +1,9 @@
+<form name="createSolicitud" role="form" ng-submit="vm.create()">
+    <fieldset class="form-group">
+        <input class="form-control input-lg" type="text" placeholder="Nombre Solicitud" ng-model="vm.solicitud.nombre">
+    </fieldset>
+    <hr>
+    <button class="btn btn-primary btn-lg" type="submit" ng-disabled="!createSolicitud.$valid">
+        <span class="fa fa-rocket"> Guardar</span>
+    </button>
+</form>
