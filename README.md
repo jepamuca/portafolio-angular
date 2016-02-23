@@ -10,7 +10,6 @@ Para desarrollo se recomiendan los siguientes pasos
 
     2. El servidor de desarrollo se puede correr usando alguno de los siguiente comandos
             gulp
-            gulp desarrollo
 
 Para producción se recomiendan los siguientes pasos
 
@@ -18,8 +17,9 @@ Para producción se recomiendan los siguientes pasos
             gulp limpiar
 
     2. Tareas para optimizar el código
-            gulp optimizar1
-            gulp optimizar2
+            gulp opt-build
+            gulp opt-html
+            gulp opt-css
 
     3. Iniciar Servidor Producción
             gulp produccion
