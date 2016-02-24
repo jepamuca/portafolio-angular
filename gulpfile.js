@@ -32,9 +32,9 @@ gulp.task('dev', function () {
             hostname: '0.0.0.0',
             livereload: true,
         },
-        //files: ["source/**/*.*"],
+        files: ["source/**/**/**/**/*.*"],
         //browser: 'google-chrome',
-        port: 8002,
+        port: 8001,
     });
 
 });
@@ -42,16 +42,17 @@ gulp.task('dev', function () {
 //Verificar cambios en el html
 gulp.task('html', function () {
     gulp.src('./source/**/**/*.html')
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(livereload({ start: true }));
 });
 
 // Preprocesa archivos Stylus a CSS
 gulp.task('css', function () {
-    gulp.src('./source/stylus/*.styl')
+    gulp.src('./source/app/**/*.styl')
         .pipe(stylus({
             use: nib(),
         }))
-        .pipe(gulp.dest('./source/stylus'))
+        .pipe(gulp.dest('./source/app/'))
         .pipe(browserSync.stream());
 });
 
@@ -66,7 +67,7 @@ gulp.task('js', function () {
 // Busca en las carpetas de estilos y javascript los archivos que hayamos creado
 // para inyectarlos en el index.html
 gulp.task('inject', function () {
-    var sources = gulp.src(['./source/app/**/*.js', './source/stylus/*.css']);
+    var sources = gulp.src(['./source/app/**/*.js', './source/app/**/*.css']);
     return gulp.src('index.html', { cwd: './source' })
         .pipe(inject(sources, {
             read: false,
@@ -87,8 +88,9 @@ gulp.task('wiredep', function () {
 
 //Ejecuta tareas si se realiza algún cambio
 gulp.task('watch', ['inject', 'html', 'css', 'js'], function () {
+    livereload.listen();
     gulp.watch('source/**/**/*.html', ['html', 'plantilla']);
-    gulp.watch('source/stylus/*.styl', ['css']);
+    gulp.watch('source/app/**/*.styl', ['css']);
     gulp.watch(['source/app/**/*.js', 'source/app/*.js' ], ['js', 'plantilla']);
     gulp.watch('source/**/**/**/**/**/**.*', ['inject']);
 });

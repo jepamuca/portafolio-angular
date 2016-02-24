@@ -5,7 +5,8 @@
         'ngRoute',
         'ngResource',
         'templates',
-        'app.solicitudes',   
+        'app.solicitudes',  
+        'app.config' 
     ]);
 
 })();
