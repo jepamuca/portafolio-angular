@@ -17,12 +17,33 @@ Para producción se recomiendan los siguientes pasos
             gulp limpiar
 
     2. Tareas para optimizar el código
+            gulp opt-plantilla
             gulp opt-build
             gulp opt-html
             gulp opt-css
 
     3. Iniciar Servidor Producción
             gulp produccion
+
+
+
+DETALLE DE LA ESTRUCTURACIÓN DE DIRECTORIOS
+
+- En la raiz del proyecto se encuentra los archivo de configuración tales como
+.bowerrc, .gitignore, .jshintrc, bower.json, gulpfile, package.json. Igualmente se encuentra 
+la carpeta source, que es donde se agregarán los archivos necesarios para la aplicación(app,
+img, lib y el index.html).
+
+
+
+
+
+
+
+
+
+
+
 
 
 

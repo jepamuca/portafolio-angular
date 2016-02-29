@@ -42,8 +42,7 @@ gulp.task('dev', function () {
 //Verificar cambios en el html
 gulp.task('html', function () {
     gulp.src('./source/**/**/*.html')
-        .pipe(browserSync.stream())
-        .pipe(livereload({ start: true }));
+        .pipe(browserSync.stream());
 });
 
 // Preprocesa archivos Stylus a CSS
@@ -74,7 +73,7 @@ gulp.task('inject', function () {
             ignorePath: '/source'
         }))
         .pipe(gulp.dest('./source'))
-        .pipe(browserSync.stream());
+       // .pipe(browserSync.stream());
 });
 
 // Inyecta las librerias que instalemos vía Bower
@@ -87,12 +86,10 @@ gulp.task('wiredep', function () {
 });
 
 //Ejecuta tareas si se realiza algún cambio
-gulp.task('watch', ['inject', 'html', 'css', 'js'], function () {
-    livereload.listen();
-    gulp.watch('source/**/**/*.html', ['html', 'plantilla']);
-    gulp.watch('source/app/**/*.styl', ['css']);
-    gulp.watch(['source/app/**/*.js', 'source/app/*.js' ], ['js', 'plantilla']);
-    gulp.watch('source/**/**/**/**/**/**.*', ['inject']);
+gulp.task('watch', ['inject', 'html', 'css', 'js','plantilla'], function () {
+    gulp.watch(['source/**/**/*.html', 'source/**/**.html', 'source/*.html'], ['html']);
+    gulp.watch('source/app/**/*.styl', ['css', 'inject']);
+    gulp.watch(['source/app/**/*.js', 'source/app/*.js' ], ['js', 'inject']);
 });
 
 /*
@@ -116,7 +113,7 @@ gulp.task('plantilla', function () {
         .pipe(gulp.dest('./source/app/'));
 });
 
-gulp.task('comprimir', function() {
+gulp.task('comprimir',function() {
    gulp.src('./source/index.html')
     .pipe(useref())
     .pipe(gulpif('*.js', uglify({mangle: false })))
@@ -172,14 +169,15 @@ gulp.task('build', function () {
 });
 
 //Servidor desarrollo
-gulp.task('default', ['dev', 'plantilla', 'inject', 'watch']);
+gulp.task('default', ['inject','dev', 'watch']);
 //gulp.task('desarrollo', ['dev', 'inject', 'watch']);
 
 //Configurar las dependencias instaladas con bower
 gulp.task('bower', ['wiredep']);
 
 //Tareas para optimizar el código
-gulp.task('opt-build', ['plantilla', 'comprimir', 'copiarImg']);
+gulp.task('opt-plantilla',['plantilla']);
+gulp.task('opt-build', ['comprimir', 'copiarImg']);
 gulp.task('opt-html', ['copyHtml']);
 gulp.task('opt-css', ['eliminarCss']);
 

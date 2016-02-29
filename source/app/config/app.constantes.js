@@ -2,6 +2,9 @@
     'use strict';
     
     angular.module('app.config', [
-    ]).constant('BaseUrl', 'http://localhost:4000/api')
+    ]).constant('nombrePlantilla', 'MANGELTECH');
+    
+    //En este módulo se pueden declarar y asignar todas las constantes
+    //que se usarán en la aplicación.
     
 })();

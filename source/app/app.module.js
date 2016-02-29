@@ -2,11 +2,15 @@
     'use strict';
 
     angular.module('app', [
-        'ngRoute',
+        'ui.router',
         'ngResource',
-        'templates',
-        'app.solicitudes',  
-        'app.config' 
+        'angular.filter',
+        //'templates',
+        'app.config',
+        'app.inicio',
+        'app.footer',
+        'app.header',
+        'app.admin'
     ]);
 
 })();
