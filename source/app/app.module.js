@@ -10,7 +10,8 @@
         'app.inicio',
         'app.footer',
         'app.header',
-        'app.admin'
+        'app.admin',
+        'app.usuarios.module'
     ]);
 
 })();
